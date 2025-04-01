@@ -1,0 +1,14 @@
+button{
+    border-radius: 4px;
+    background: none;
+}
+
+button a{
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+button a:hover{
+    translate: scale(1.1);
+    
+}

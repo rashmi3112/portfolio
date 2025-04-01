@@ -1,0 +1,42 @@
+mat-card {
+    background-color: rgb(250, 250, 250);
+    width: 300px;
+    border-radius: 0%;
+    height: 180px;
+    box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+mat-card:hover{
+    transform: scale(1.1);
+}
+
+mat-card-header mat-card-title{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    padding: 15px;
+    gap: 4px;
+}
+
+mat-content{
+    display:flexbox;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+mat-chip-listbox{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+mat-chip-options{
+    display: flex;
+    justify-content: center;
+}
+
+mat-card-title mat-card-icon{
+    display: flex;
+    justify-content: center;
+}

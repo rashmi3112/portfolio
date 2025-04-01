@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html,
+body {
+    height: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.dark {
+    background-color: #11111b;
+    color: white;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 28px;
+    color: white;
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+:root {
+    --mdc-filled-text-field-focus-label-text-color: #4CAF50 !important;
+    /* Your desired color */
+}
+
+:root {
+    --mdc-filled-text-field-focus-active-indicator-color: #4CAF50 !important;
+    /* Change to desired color */
+}

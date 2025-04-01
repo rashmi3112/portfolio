@@ -1,0 +1,13 @@
+h6{
+    cursor: pointer;
+}
+
+a{
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+a:hover {
+    color: #65e96a;
+    transform: scale(1.1);
+}

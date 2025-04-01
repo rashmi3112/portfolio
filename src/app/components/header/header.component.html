@@ -1,0 +1,15 @@
+<header class="flex justify-between fixed top-0 left-0 w-full shadow-md z-50 items-center p-4 bg-gray-800 text-white ">
+    <a href="#home" class="ml-20"><img src="public/coding.png" class="w-10 h-10"></a>
+    <div class="space-x-9 font-bold text-lg">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <!-- Dark Mode Toggle -->
+    <button (click)="toggleTheme()" class="theme-toggle">
+        <mat-icon *ngIf="isDarkMode" class="text-gray-200">dark_mode</mat-icon>
+        <mat-icon *ngIf="!isDarkMode" class="text-yellow-300">light_mode</mat-icon>
+    </button>
+</header>

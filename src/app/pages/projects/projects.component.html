@@ -1,0 +1,29 @@
+<div class="container max-auto p-4 my-20">
+    <h2 class="flex justify-center text-3xl font-bold pt-28">My Projects</h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <mat-card *ngFor="let project of projects; let i = index">
+            <mat-card-header>
+                <div class="img-container">
+                    <img [src]="project.image" [alt]="project.name">
+                    <div class="img-overlay">{{project.name}}</div>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <p class="pt-2" [innerHTML]="project.shortDesc"></p>
+
+                <div *ngIf="showMoreStates[i]">
+                    <p>
+                        {{project.longDesc}}
+                    </p>
+                </div>
+            </mat-card-content>
+            <mat-card-actions class="ml-2">
+                <button mat-button (click)="toggleReadMore(i)">
+                    {{ showMoreStates[i] ? 'Read Less' : 'Read More'}}
+                </button>
+              </mat-card-actions>
+        </mat-card>
+
+    </div>
+</div>
