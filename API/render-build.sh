@@ -1,7 +1,10 @@
-#!/bin/bash
-set -e
-
+#!/usr/bin/env bash
 echo "Starting .NET build and publish"
+
+# Ensure .NET is available
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$DOTNET_ROOT:$PATH
+
+dotnet --info  # Check if .NET is installed
 dotnet restore
-dotnet publish -c Release -o API/bin/Release/net8.0
-echo "Build and publish completed!"
+dotnet publish -c Release -o out
