@@ -7,4 +7,6 @@ export PATH=$DOTNET_ROOT:$PATH
 
 dotnet --info  # Check if .NET is installed
 dotnet restore
-dotnet publish -c Release -o out
+
+#Build a self-contained executable for Linux
+dotnet publish src/API/API.csproj -c Release -r linux-x64 --self-contained true -o src/API/out
