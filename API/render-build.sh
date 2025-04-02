@@ -1,11 +1,12 @@
 #!/bin/bash
 set -e  # Stop script if any command fails
 
-echo "Updating package list..."
-apt-get update
+echo "Starting .NET build and publish"
 
-echo "Installing .NET SDK 8.0..."
-apt-get install -y dotnet-sdk-8.0
+# Restore dependencies
+dotnet restore API/
 
-echo "Building and publishing .NET backend..."
-dotnet publish -c Release -o out
+# Build and publish
+dotnet publish API/ -c Release -o API/out
+
+echo "Build and publish completed"
