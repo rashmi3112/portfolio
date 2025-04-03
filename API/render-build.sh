@@ -7,8 +7,16 @@ export PATH=$DOTNET_ROOT:$PATH
 
 dotnet --info  # Check if .NET is installed
 
-# Move into the API directory before restoring and publishing
-cd API
+# Find the correct API directory
+if [ -d "./API" ]; then
+    cd API
+elif [ -d "./src/API" ]; then
+    cd src/API
+else
+    echo "Error: API directory not found!"
+    exit 1
+fi
 
+# Restore and publish the application
 dotnet restore API.csproj
 dotnet publish API.csproj -c Release -r linux-x64 --self-contained false -o out
