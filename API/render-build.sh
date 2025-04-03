@@ -10,8 +10,6 @@ dotnet --info  # Check if .NET is installed
 # Find the correct API directory
 if [ -d "./API" ]; then
     cd API
-elif [ -d "./src/API" ]; then
-    cd src/API
 else
     echo "Error: API directory not found!"
     exit 1
