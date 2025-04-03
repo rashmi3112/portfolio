@@ -5,7 +5,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Load email credentials securely
 var smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER") ?? "smtp.gmail.com";
-var smtpPort = Environment.GetEnvironmentVariable("SMTP_PORT") ?? "587";
+// var smtpPort = Environment.GetEnvironmentVariable("SMTP_PORT") ?? "587";
+var smtpPortStr = Environment.GetEnvironmentVariable("SMTP_PORT") ?? "587";
+if (!int.TryParse(smtpPortStr, out int smtpPort))
+{
+    throw new InvalidOperationException("Invalid SMTP_PORT value. It must be an integer.");
+}
 var smtpEmail = Environment.GetEnvironmentVariable("SMTP_EMAIL") ?? "";
 var smtpPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD") ?? "";
 
@@ -25,6 +30,10 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
 //logging for Render debugging
 var logger = LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger("App");
 logger.LogInformation("API is starting...");
+logger.LogInformation("SMTP Server: {smtpServer}", smtpServer);
+logger.LogInformation("SMTP Port: {smtpPort}", smtpPort);
+logger.LogInformation("SMTP Email: {smtpEmail}", smtpEmail);
+logger.LogInformation("SMTP Password is set: {isPasswordSet}", !string.IsNullOrEmpty(smtpPassword));
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
