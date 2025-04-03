@@ -18,5 +18,4 @@ fi
 dotnet restore API.csproj
 dotnet publish API.csproj -c Release -o out
 
-# Run the API
-dotnet out/API.dll
+echo "Build completed successfully!"
