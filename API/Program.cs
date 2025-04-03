@@ -6,8 +6,14 @@ var builder = WebApplication.CreateBuilder(args);
 //Load email credentials securely
 var smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER") ?? "smtp.gmail.com";
 var smtpPort = Environment.GetEnvironmentVariable("SMTP_PORT") ?? "587";
-var smtpEmail = Environment.GetEnvironmentVariable("SMTP_EMAIL") ?? "rashmiunhale086@gmail.com";
-var smtpPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD") ?? "dpyz ujfi pubo avtu";
+var smtpEmail = Environment.GetEnvironmentVariable("SMTP_EMAIL") ?? "";
+var smtpPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD") ?? "";
+
+// checking if credentials are not missing in production
+if (string.IsNullOrEmpty(smtpEmail) || string.IsNullOrEmpty(smtpPassword))
+{
+    throw new InvalidOperationException("SMTP credentials are missing. Set the required environment variables.");
+}
 
 //Kestral configuration for Render
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
@@ -68,6 +74,6 @@ app.UseIpRateLimiting();
 app.MapControllers();
 
 //logger
-logger.LogInformation("API is running");
+logger.LogInformation("API is running on port {port}", port);
 
 app.Run();
