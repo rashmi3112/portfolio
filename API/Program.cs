@@ -10,8 +10,10 @@ var smtpEmail = Environment.GetEnvironmentVariable("SMTP_EMAIL") ?? "rashmiunhal
 var smtpPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD") ?? "dpyz ujfi pubo avtu";
 
 //Kestral configuration for Render
-builder.WebHost.ConfigureKestrel(serverOptions => {
-    serverOptions.ListenAnyIP(5000);
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(int.Parse(port));
 });
 
 //logging for Render debugging
