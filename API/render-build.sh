@@ -7,11 +7,9 @@ export PATH=$DOTNET_ROOT:$PATH
 
 dotnet --info  # Check if .NET is installed
 
-# Find the correct API directory
-if [ -d "./src/API" ]; then
-    cd src/API
-else
-    echo "Error: API directory not found!"
+# No need to change directories if API.csproj is already in the root
+if [ ! -f "./API.csproj" ]; then
+    echo "Error: API.csproj not found in the expected location!"
     ls -la  # Print directory structure for debugging
     exit 1
 fi
