@@ -5,8 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Load email credentials securely
 var smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER") ?? "smtp.gmail.com";
-// var smtpPort = Environment.GetEnvironmentVariable("SMTP_PORT") ?? "587";
 var smtpPortStr = Environment.GetEnvironmentVariable("SMTP_PORT") ?? "587";
+
 if (!int.TryParse(smtpPortStr, out int smtpPort))
 {
     throw new InvalidOperationException("Invalid SMTP_PORT value. It must be an integer.");
@@ -21,7 +21,7 @@ if (string.IsNullOrEmpty(smtpEmail) || string.IsNullOrEmpty(smtpPassword))
 }
 
 //Kestral configuration for Render
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
     serverOptions.ListenAnyIP(int.Parse(port));
