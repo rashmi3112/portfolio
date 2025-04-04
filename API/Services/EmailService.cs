@@ -15,14 +15,21 @@ public class EmailService
 
     public async Task<bool> SendEmailAsync(ContactModel contactModel)
     {
-        var emailSettings = _configuration.GetSection("EmailSettings");
+        //loading from environment
+        var smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER") ?? "smtp.gmail.com";
+        var smtpPortStr = Environment.GetEnvironmentVariable("SMTP_PORT") ?? "587";
+        var smtpEmail = Environment.GetEnvironmentVariable("SMTP_EMAIL");
+        var smtpPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD");
 
-        var portValue = emailSettings["Port"];
-        int smtpPort = string.IsNullOrWhiteSpace(portValue) ? 587 : int.Parse(portValue);
+        if (string.IsNullOrWhiteSpace(smtpEmail) || string.IsNullOrWhiteSpace(smtpPassword))
+            return false;
+
+        if (!int.TryParse(smtpPortStr, out int smtpPort))
+            smtpPort = 587;
 
         var email = new MimeMessage();
-        email.From.Add(new MailboxAddress(emailSettings["SenderName"], emailSettings["SenderEmail"]));
-        email.To.Add(new MailboxAddress("Rashmi Unhale",emailSettings["SenderEmail"]));
+        email.From.Add(new MailboxAddress("Rashmi Unhale", smtpEmail));
+        email.To.Add(new MailboxAddress("Rashmi Unhale", smtpEmail));
         email.Subject = "New Contact Form Submission";
 
         email.Body = new TextPart("plain")
@@ -33,14 +40,15 @@ public class EmailService
         using var smtp = new SmtpClient();
         try
         {
-            await smtp.ConnectAsync(emailSettings["SmtpServer"], smtpPort, MailKit.Security.SecureSocketOptions.StartTls);
-            await smtp.AuthenticateAsync(emailSettings["SenderEmail"], emailSettings["Password"]);
+            await smtp.ConnectAsync(smtpServer, smtpPort, MailKit.Security.SecureSocketOptions.StartTls);
+            await smtp.AuthenticateAsync(smtpEmail, smtpPassword);
             await smtp.SendAsync(email);
             await smtp.DisconnectAsync(true);
             return true;
         }
-        catch
+        catch (Exception ex)
         {
+            Console.WriteLine($"Failed to send the mail: {ex.Message}");
             return false;
         }
     }
