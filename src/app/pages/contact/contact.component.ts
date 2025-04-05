@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-contact',
@@ -44,15 +45,23 @@ export class ContactComponent {
 
     const formData = this.contactForm.value;
 
-    this.http.post('https://localhost:7172/api/contact/send', formData).subscribe({
+    this.http.post(`${environment.apiBaseUrl}/contact/send`, formData).subscribe({
       next: () => {
         this.showAlert('Mail sent successfully!.', 'success');
-        this.contactForm.reset();
       },
       error: () => {
         this.showAlert('Something went wrong. Please try again.', 'error');
       },
       complete: () => {
+        this.contactForm.reset(); 
+        
+        Object.keys(this.contactForm.controls).forEach(key => {
+          const control = this.contactForm.get(key);
+          control?.setErrors(null);
+          control?.markAsPristine();
+          control?.markAsUntouched();
+        });
+
         this.isLoading = false;
       }
     });
