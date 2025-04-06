@@ -1,3 +1,25 @@
+# Set all files detectable
 * linguist-detectable=true
+
+# Force language mapping
+*.ts linguist-language=TypeScript
+*.html linguist-language=HTML
+*.scss linguist-language=SCSS
 *.cs linguist-language=C#
 *.csproj linguist-language=C#
+
+# Exclude markdown and text files from stats
+*.md linguist-documentation=false
+*.txt linguist-documentation=false
+
+# Exclude common non-code folders
+docs/** linguist-vendored
+node_modules/** linguist-vendored
+dist/** linguist-vendored
+
+# Exclude config & lock files
+*.json linguist-vendored
+*.lock linguist-vendored
+*.config.* linguist-vendored
+tailwind.config.js linguist-vendored
+angular.json linguist-vendored
