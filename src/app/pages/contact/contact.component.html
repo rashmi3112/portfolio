@@ -1,11 +1,11 @@
-<div class="flex justify-center mb-20 pt-24">
-    <div class="w-1/2 flex justify-center relative p-10" 
+<div class="flex flex-col lg:flex-row justify-center gap-8 px-4 mb-20 pt-24">
+    <div class="w-full lg:w-1/2 flex justify-center relative p-6 sm:p-10" 
         style="background: url('public/gif/chat_17569431.gif') center/contain no-repeat;">
     </div>
-    <mat-divider vertical>
+    <mat-divider vertical class="hidden lg:block">
         <div class="h-10 w-[2px] bg-gray-400 dark:bg-gray-600"></div>
     </mat-divider>
-    <div class="w-1/2 flex justify-center items-center">
+    <div class="w-full lg:w-1/2 flex justify-center items-center">
         <form [formGroup]="contactForm" (ngSubmit)="submitForm()" class="flex-1 space-y-1 gap-1 pl-8 pr-28">
             <h1 class="text-xl text-center font-bold">Let's connect</h1>
             <mat-form-field appearance="fill" class="w-full">

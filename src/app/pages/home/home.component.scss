@@ -5,24 +5,42 @@
     min-height: 100vh;
     padding:0 10%;
     gap: 120px;
+
+    @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        padding: 2rem 1rem;
+        gap: 2rem;
+        text-align: center;
+    }
 }
 
 .home-content {
     max-width: 400px;
     text-align: left;
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+    }
 }
 
 .title-wrapper{
     position: relative;
-    width: fit-content;
+    width: 100%;
     height: 40px;
-    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+
+    @media (max-width: 768px) {
+        margin: 1rem auto;
+    }
 }
 
 .download-btn{
     display: flex;
-    justify-content: space-between;
-    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     background-color: #4CAF50;
     color: white;
     padding: 20px;
@@ -34,6 +52,11 @@
     &:hover {
         background-color: #4bd252;
         transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+        margin: 1rem auto;
+        font-size: 0.95rem;
     }
 }
 
@@ -48,6 +71,10 @@
     width: 400px;
     height: auto;
     border-radius: 50%;
+
+    @media (max-width: 768px) {
+        width: 200px;
+    }
 }
 
 @keyframes fadeInOut {
@@ -64,4 +91,11 @@
     font-weight: bold;
     font-size: xx-large;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    white-space: nowrap;
+    padding: 0 1rem;
+
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+        padding: 0;
+    }
 }

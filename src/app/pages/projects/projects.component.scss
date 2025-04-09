@@ -32,6 +32,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     text-align: center;
+    padding: 1rem;
 }
 
 .img-container:hover .img-overlay{
@@ -44,6 +45,7 @@ mat-card-content p{
 
 mat-card-actions button{
     color: black;
+    padding-bottom: 1rem;
 }
 
 mat-card{
@@ -51,5 +53,25 @@ mat-card{
 }
 
 button{
+    color: #4CAF50;
+    font-weight: 500;
+    background: none;
+    text-transform: none;
     background: none;
 }
+
+@media (max-width: 768px) {
+    .img-container {
+        height: 180px;
+
+        .img-overlay {
+            font-size: 1rem;
+        }
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        padding-top: 3rem;
+    }
+}
+ 
