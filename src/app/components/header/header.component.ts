@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DarkModeService } from '../../services/dark-mode.service';
 import { CommonModule } from '@angular/common';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +13,14 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatIconModule,
     MatButtonModule,
     CommonModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDividerModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  isMenuOpen: boolean = false;
   isDarkMode = false;
 
   constructor(private darkModeService: DarkModeService) {
@@ -32,4 +35,13 @@ export class HeaderComponent {
     this.isDarkMode = !this.isDarkMode;
     this.darkModeService.setDarkMode(this.isDarkMode);
   }
+
+  scrollToSection(id: string, event: Event) {
+    event.preventDefault(); // Prevent the default anchor behavior
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    this.isMenuOpen = false;
+  }  
 }

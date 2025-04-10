@@ -1,5 +1,5 @@
 <div class="flex flex-col lg:flex-row justify-center gap-8 px-4 mb-20 pt-24">
-    <div class="w-full lg:w-1/2 flex justify-center relative p-6 sm:p-10" 
+    <div class="hidden lg:flex w-full lg:w-1/2 justify-center relative p-6" 
         style="background: url('public/gif/chat_17569431.gif') center/contain no-repeat;">
     </div>
     <mat-divider vertical class="hidden lg:block">
@@ -7,7 +7,7 @@
     </mat-divider>
     <div class="w-full lg:w-1/2 flex justify-center items-center">
         <form [formGroup]="contactForm" (ngSubmit)="submitForm()" class="flex-1 space-y-1 gap-1 pl-8 pr-28">
-            <h1 class="text-xl text-center font-bold">Let's connect</h1>
+            <h1 class="text-xl text-center font-bold mb-2">Let's connect</h1>
             <mat-form-field appearance="fill" class="w-full">
                 <mat-label>Name</mat-label>
                 <input matInput formControlName="name" type="text" placeholder="Name">
@@ -16,13 +16,13 @@
 
             <mat-form-field appearance="fill" class="w-full">
                 <mat-label>Email</mat-label>
-                <input matInput formControlName="email" class="w-full h-5 text-xl px-3 py-4 text-gray-800" type="email" placeholder="Email">
+                <input matInput formControlName="email" class="w-full h-5 text-xl text-gray-800" type="email" placeholder="Email">
                 <mat-error *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">Email is required.</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="w-full">
                 <mat-label>Message</mat-label>
-                <textarea matInput formControlName="message" placeholder="Message" class="w-full text-xl px-3 py-4" rows="3"></textarea>
+                <textarea matInput formControlName="message" placeholder="Message" class="w-full text-xl" rows="3"></textarea>
                 <mat-error *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">Message is required.</mat-error>
             </mat-form-field>
             <button mat-raised-button type="submit"

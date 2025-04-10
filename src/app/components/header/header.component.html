@@ -1,15 +1,47 @@
-<header class="flex flex-wrap justify-between items-center fixed top-0 left-0 w-full shadow-md z-50 p-4 bg-gray-800 text-white ">
-    <a href="#home" class="ml-4 mb-2 sm:mb-0"><img src="public/coding.png" class="w-10 h-10" alt="Logo"></a>
-    <div class="flex flex-wrap justify-center gap-4 sm:gap-6 font-bold text-base sm:text-lg mb-2 sm:mb-0">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </div>
-    <!-- Dark Mode Toggle -->
-    <button (click)="toggleTheme()" class="theme-toggle">
-        <mat-icon *ngIf="isDarkMode" class="text-gray-200">dark_mode</mat-icon>
-        <mat-icon *ngIf="!isDarkMode" class="text-yellow-300">light_mode</mat-icon>
+<header class="flex justify-between items-center fixed top-0 left-0 w-full shadow-md z-50 p-4 bg-gray-800 text-white">
+    <a href="#home" class="ml-4">
+      <img src="public/coding.png" class="w-10 h-10" alt="Logo" />
+    </a>
+  
+    <!-- Desktop Navigation -->
+    <nav class="hidden sm:flex gap-6 font-bold text-base">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  
+    <!-- Dark Mode (Desktop Only) -->
+    <button (click)="toggleTheme()" class="theme-toggle hidden sm:block">
+      <mat-icon *ngIf="isDarkMode" class="text-gray-200">dark_mode</mat-icon>
+      <mat-icon *ngIf="!isDarkMode" class="text-yellow-300">light_mode</mat-icon>
     </button>
-</header>
+  
+    <!-- Hamburger (Mobile Only) -->
+    <button
+      class="block sm:hidden ml-auto text-white bg-transparent hover:bg-transparent focus:outline-none"
+      (click)="isMenuOpen = !isMenuOpen"
+      aria-label="Toggle Menu"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+  </header>
+  
+  <!-- Mobile Dropdown Menu (Below Header) -->
+  <nav *ngIf="isMenuOpen" class="mobile-menu sm:hidden mt-[64px] fixed top-0 left-0 w-full bg-gray-800/90 backdrop-blur-2xl text-white z-40 flex flex-col items-center gap-4 py-6">
+    <a href="#" (click)="scrollToSection('home', $event)">Home</a>
+    <a href="#" (click)="scrollToSection('about', $event)">About</a>
+    <a href="#" (click)="scrollToSection('skills', $event)">Skills</a>
+    <a href="#" (click)="scrollToSection('projects', $event)">Projects</a>
+    <a href="#" (click)="scrollToSection('contact', $event)">Contact</a>
+  
+    <mat-divider class="w-3/4 !border-gray-600"></mat-divider>
+  
+    <!-- Dark Mode (Mobile) -->
+    <button (click)="toggleTheme()" class="theme-toggle mt-2">
+      <mat-icon *ngIf="isDarkMode" class="text-gray-200">dark_mode</mat-icon>
+      <mat-icon *ngIf="!isDarkMode" class="text-yellow-300">light_mode</mat-icon>
+    </button>
+  </nav>
+  

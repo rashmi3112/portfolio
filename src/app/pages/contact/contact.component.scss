@@ -1,4 +1,4 @@
-button{
+button {
     background-color: #4CAF50;
     font-weight: 500;
     cursor: pointer;
@@ -8,4 +8,29 @@ button{
 button:disabled {
     cursor: not-allowed;
 }
-  
+
+@media (max-width: 1023px) {
+    form {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    mat-form-field {
+        margin-bottom: 0.75rem;
+    }
+
+    button {
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+
+    // Optional: override any padding or height issues caused by hidden image
+    .mat-divider {
+        display: none !important;
+    }
+}

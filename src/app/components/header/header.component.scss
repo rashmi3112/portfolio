@@ -1,13 +1,23 @@
-h6{
+h6 {
     cursor: pointer;
 }
 
-a{
+a {
     display: inline-block;
     transition: transform 0.3s ease;
 }
 
 a:hover {
+    color: #65e96a;
+    transform: scale(1.1);
+}
+
+.mobile-menu a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu a:hover {
     color: #65e96a;
     transform: scale(1.1);
 }
