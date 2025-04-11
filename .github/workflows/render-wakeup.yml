@@ -1,0 +1,14 @@
+name: Keep Render Awake
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping-render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Wake up Render backend
+        run: curl -s --fail https://portfolio-api-rashmi.onrender.com/swagger/index.html || echo "Render might be asleep"
