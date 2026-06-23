@@ -59,6 +59,18 @@ export class ProjectsComponent {
       shortDesc: "It is a portfolio website.",
       longDesc: "The Portfolio website is a website that showcases the services provided by the astrologer. It is created using .Net Core, Angular."
     },
+    {
+      name: "SkyCast",
+      image: "public/images/skycast.png",
+      shortDesc: "It is a weather forecasting website.",
+      longDesc: "The SkyCast website is a weather forecast website that provides weather information for users."
+    },
+    {
+      name: "TrackFLux Todo",
+      image: "public/images/TrackfluxTodo.png",
+      shortDesc: "It is a todo list web application.",
+      longDesc: "The TrackFLux Todo is a Todo List web application created using .Net and Angular."
+    }
   ]
 
   constructor() {
