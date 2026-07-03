@@ -74,7 +74,7 @@ export class ProjectsComponent {
     {
       name: "CipherEye",
       image: "public/images/CipherEye.jpeg",
-      shortDesc: "<a href='https://rashmiunhale-ciphereye.hf.space/' class='text-blue-500 hover:underline' target='_blank'>CipherEye</a> is a privacy-first, multi-agent AI platform for phishing and cyber threat detection. <a href='YOUR_GITHUB_REPO_LINK' class='text-blue-500 hover:underline' target='_blank'>GitHub</a>",
+      shortDesc: "<a href='https://rashmiunhale-ciphereye.hf.space/' class='text-blue-500 hover:underline' target='_blank'>CipherEye</a> is a privacy-first, multi-agent AI platform for phishing and cyber threat detection. <a href='https://github.com/rashmi3112/CipherEye' class='text-blue-500 hover:underline' target='_blank'>GitHub</a>",
       longDesc: "CipherEye is an AI-powered cybersecurity platform built using React, TypeScript, FastAPI, and Google Gemini 2.5 Flash. The application analyzes URLs, emails, SMS messages, images, and documents through an orchestrated multi-agent architecture. Specialized AI agents perform PII detection, content analysis, threat assessment, and report generation to identify phishing attacks, social engineering attempts, and other cyber threats. The platform provides a Trust Score, detailed findings, evidence, and actionable recommendations, helping users verify digital content before they trust it. This was done as a part of the Kaggle x Google AI Agents: Intensive vibe coding."
     }
   ]
